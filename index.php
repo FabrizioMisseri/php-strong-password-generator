@@ -6,18 +6,24 @@
 // Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente.
 // Scriviamo tutto (logica e layout) in un unico file *index.php*// **Milestone 2**
 // Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file *functions.php* che includeremo poi nella pagina principale
-
-
 // **Milestone 3**
 // Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
+
+
 // **Milestone 4 (BONUS)**
 // Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme).
 // Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
+
+session_start();
 
 $pass_len = $_GET["pass_len"] ?? "";
 $pass_len = intval($pass_len);
 
 include_once __DIR__ . '/functions.php';
+
+if (!empty($pass_len)) {
+    $_SESSION["password"] = generate_rnd_password($pass_len);
+}
 
 ?>
 
@@ -61,18 +67,18 @@ include_once __DIR__ . '/functions.php';
 
                     <div class="row mt-5">
                         <div class="col-6">
-                            <button class="btn btn-primary" type="submit">INVIA</button>
+                            <button class="btn btn-primary" type="submit">GENERA PASS</button>
                             <button class="btn btn-primary" type="reset">RESET</button>
+                            <?php if ($pass_len != 0) { ?>
+                                <a class="btn btn-primary" href="result.php">MOSTRA PASS</a>
+                            <?php } ?>
                         </div>
                     </div>
 
                 </form>
                 <!-- / FORM -->
 
-                <!-- result -->
-                <h3 class="text-center mt-5">la tua pass è:
-                    <?php echo generate_rnd_password($pass_len); ?>
-                </h3>
+
             </div>
 
         </div>
