@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+$pass_len = $_GET["pass_len"] ?? "";
+$pass_len = intval($pass_len);
+
+include_once __DIR__ . '/functions.php';
+
+if (!empty($pass_len)) {
+    generate_rnd_password($pass_len);
+}
+
 ?>
 
 <!DOCTYPE html>

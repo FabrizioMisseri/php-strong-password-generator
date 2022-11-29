@@ -15,16 +15,6 @@
 // Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
 
 session_start();
-
-$pass_len = $_GET["pass_len"] ?? "";
-$pass_len = intval($pass_len);
-
-include_once __DIR__ . '/functions.php';
-
-if (!empty($pass_len)) {
-    generate_rnd_password($pass_len);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +42,7 @@ if (!empty($pass_len)) {
                 <!-- blocco parametro valido -->
 
                 <!-- FORM -->
-                <form action="index.php" method="GET">
+                <form action="result.php" method="GET">
                     <div class="row">
                         <div class="col-6">
                             <label for="pass">lunghezza password</label>
@@ -69,9 +59,7 @@ if (!empty($pass_len)) {
                         <div class="col-6">
                             <button class="btn btn-primary" type="submit">GENERA PASS</button>
                             <button class="btn btn-primary" type="reset">RESET</button>
-                            <?php if ($pass_len != 0) { ?>
-                                <a class="btn btn-primary" href="result.php">MOSTRA PASS</a>
-                            <?php } ?>
+
                         </div>
                     </div>
 

@@ -11,5 +11,4 @@ function generate_rnd_password($length_number)
     };
 
     $_SESSION["password"] = $pass_result;
-    header("Location:./result.php");
 };
