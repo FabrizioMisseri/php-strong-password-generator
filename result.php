@@ -19,7 +19,7 @@ session_start();
         <?php echo $_SESSION["password"]; ?>
     </h3>
 
-    <a href="./logout.php">logout</a>
+    <a href="./logout.php">torna indietro</a>
 </body>
 
 </html>
