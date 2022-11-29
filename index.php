@@ -22,7 +22,7 @@ $pass_len = intval($pass_len);
 include_once __DIR__ . '/functions.php';
 
 if (!empty($pass_len)) {
-    $_SESSION["password"] = generate_rnd_password($pass_len);
+    generate_rnd_password($pass_len);
 }
 
 ?>
@@ -58,7 +58,7 @@ if (!empty($pass_len)) {
                             <label for="pass">lunghezza password</label>
                         </div>
                         <div class="col-6">
-                            <input type="number" min="1" id="pass" name="pass_len">
+                            <input type="number" min="8" max="24" id="pass" name="pass_len">
                         </div>
 
                     </div>
